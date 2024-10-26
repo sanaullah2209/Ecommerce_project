@@ -30,7 +30,9 @@ export async function getProductById(req: Request, res: Response) {
     res.status(500).send();
   }
 }
+
 // end here
+
 // insert data from here ☘️
 export async function createProduct(req: Request, res: Response) {
   try {
