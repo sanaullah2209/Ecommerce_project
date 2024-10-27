@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { db } from "../../db/index";
-import { productsTable ,createProductSchema} from "../../db/productsSchema";
+import { productsTable, createProductSchema } from "../../db/productsSchema";
 import { eq } from "drizzle-orm";
 import _ from "lodash";
 // list product start from here
@@ -37,6 +37,7 @@ export async function getProductById(req: Request, res: Response) {
 // insert data from here ☘️
 export async function createProduct(req: Request, res: Response) {
   try {
+    console.log(req.userId);
     const [product] = await db
       .insert(productsTable)
       .values(req.cleanBody)
@@ -53,14 +54,14 @@ export async function updateProduct(req: Request, res: Response) {
   try {
     const id = Number(req.params.id);
     const updatedFields = req.cleanBody;
-  const [product] = await db.update(productsTable).set(updatedFields).where(eq(productsTable.id,id)).returning(); 
-  if (product) {
-    res.json(product)
-  } else {
-    res.status(404).send({ message: "Product not found to update" });
-  } 
+    const [product] = await db.update(productsTable).set(updatedFields).where(eq(productsTable.id, id)).returning();
+    if (product) {
+      res.json(product)
+    } else {
+      res.status(404).send({ message: "Product not found to update" });
+    }
 
-} catch (e) {
+  } catch (e) {
     res.status(500).send();
   }
 }

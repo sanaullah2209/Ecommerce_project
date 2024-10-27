@@ -7,6 +7,7 @@ declare global{
                 userId?:Number;
             cleanBody?:any;
             verifyToken?:any;
+            role?:string;
             }
     }
 }
