@@ -6,7 +6,8 @@ declare global{
   export interface Request{
                 userId?:Number;
             cleanBody?:any;
-            verifyToken?:any;
+            verifyToken:any;
+            verifySeller:any;
             role?:string;
             }
     }

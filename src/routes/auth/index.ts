@@ -1,9 +1,9 @@
 import { Router } from "express";
-import { validateData } from "../../middlewares/validationMiddleware";
-import { createUserSchema, loginSchema } from "../../db/usersSchema";
+import { validateData } from "../../middlewares/validationMiddleware.js";
+import { createUserSchema, loginSchema } from "../../db/usersSchema.js";
 import bcrypt from "bcrypt";
-import { db } from "../../db";
-import { userTable } from "../../db/usersSchema";
+import { db } from "../../db/index.js";
+import { userTable } from "../../db/usersSchema.js";
 import { eq } from "drizzle-orm";
 import jwt from 'jsonwebtoken';
 
