@@ -9,4 +9,6 @@ export const productsTable = pgTable("products", {
   price:doublePrecision().notNull(),
 });
 
+
 export const createProductSchema = createInsertSchema(productsTable).omit({id:true});
+export const updateProductSchema = createInsertSchema(productsTable).omit({id:true}).partial();

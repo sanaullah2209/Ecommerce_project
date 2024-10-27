@@ -52,7 +52,7 @@ export async function createProduct(req: Request, res: Response) {
 export async function updateProduct(req: Request, res: Response) {
   try {
     const id = Number(req.params.id);
-    const updatedFields = req.body;
+    const updatedFields = req.cleanBody;
   const [product] = await db.update(productsTable).set(updatedFields).where(eq(productsTable.id,id)).returning(); 
   if (product) {
     res.json(product)
