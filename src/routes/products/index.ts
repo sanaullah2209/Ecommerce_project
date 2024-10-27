@@ -5,13 +5,21 @@ import {
   createProduct,
   updateProduct,
   deleteProduct,
-} from "./ProductController";
+} from "./productController";
+import { validateData } from "../../middlewares/validationMiddleware";
+import { createProductSchema } from "../../db/productsSchema";
+
+ 
+
+
+
 // endpoints products
+
 const router = Router();
 
 router.get("/", listProducts);
 router.get("/:id", getProductById);
-router.post("/", createProduct);
+router.post("/", validateData(createProductSchema), createProduct);
 router.put("/:id", updateProduct);
 router.delete("/:id", deleteProduct);
 
