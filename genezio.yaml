@@ -15,7 +15,6 @@ backend:
     packageManager: npm
   scripts:
     deploy: npm install && npm run build
-    dev: NODE_ENV=dev node dist/src/index.js
   # Information about the backend's functions.
   functions:
     # The name (label) of the function.
